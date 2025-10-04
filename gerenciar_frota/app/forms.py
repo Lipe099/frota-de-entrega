@@ -21,7 +21,7 @@ class ManutencaoForm(forms.ModelForm):
         model = Manutencao
         fields = ['veiculo', 'tipo', 'descricao', 'data', 'custo', 'status']
 
-class AbastecimentoForm(forms.ModelForm):
+class AbastecimentoForm(forms.ModelForm):;
     class Meta:
         model = Abastecimento
         fields = ['litros', 'custo', 'dataAbastecimento', 'veiculo']
