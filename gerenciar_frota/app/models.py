@@ -6,6 +6,7 @@ class Veiculo(models.Model):
     km = models.PositiveIntegerField()
     autonomia = models.DecimalField(max_digits=5, decimal_places=2)
     ultimaManutencao = models.DateField()
+    disponivel = models.BooleanField(default=True)
     
    
     def __str__(self):
@@ -17,6 +18,7 @@ class Motorista(models.Model):
     nome = models.CharField(max_length=100)
     num_cnh = models.CharField(max_length=14)
     veiculoAtual = models.ForeignKey('Veiculo', on_delete=models.SET_NULL, null=True, blank=True)
+    disponivel = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.nome} ({self.cpf})"
@@ -26,13 +28,19 @@ class Manutencao(models.Model):
         ("PREVENTIVA", 'Preventiva'),
         ("CORRETIVA", 'Corretiva'),
     ]
+    STATUS_MANUTENCAO = [
+        ("PENDENTE", "Pendente"),
+        ("CONCLUIDA", "Concluída"),
+    ] 
 
     veiculo = models.ForeignKey('Veiculo', on_delete=models.CASCADE)
     tipo = models.CharField(max_length=10, choices=TIPO_MANUTENCAO)
     descricao = models.TextField()
     data = models.DateField()
     custo = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20, default="PENDENTE", choices= STATUS_MANUTENCAO)
     
+   
 
     def __str__(self):
         return f"{self.get_tipo_display()} - {self.veiculo.modelo} ({self.data})"
