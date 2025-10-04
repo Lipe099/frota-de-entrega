@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Frota</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; }
+        header { background: #007bff; color: #fff; padding: 20px; text-align: center; }
+        main { max-width: 900px; margin: 30px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+        h2 { color: #007bff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px;}
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left;}
+        th { background: #f0f0f0; }
+        .btn { background: #007bff; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;}
+        .btn:hover { background: #0056b3; }
+        form { margin-top: 20px; }
+        label { display: block; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Frota</h1>
+    </header>
+    <main>
+        <h2>Adicionar Veículo</h2>
+        <form>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" name="placa" required>
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="disponivel">Disponível</option>
+                <option value="em_uso">Em uso</option>
+                <option value="manutencao">Manutenção</option>
+            </select>
+
+            <button type="submit" class="btn">Adicionar</button>
+        </form>
+
+        <h2>Lista de Veículos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemplo de veículo -->
+                <tr>
+                    <td>ABC-1234</td>
+                    <td>Fiat Uno</td>
+                    <td>Disponível</td>
+                    <td>
+                        <button class="btn">Editar</button>
+                        <button class="btn" style="background:#dc3545;">Remover</button>
+                    </td>
+                </tr>
+                <!-- Adicione mais veículos aqui -->
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

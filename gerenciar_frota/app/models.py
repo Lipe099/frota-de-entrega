@@ -6,7 +6,8 @@ class Veiculo(models.Model):
     km = models.PositiveIntegerField()
     autonomia = models.DecimalField(max_digits=5, decimal_places=2)
     ultimaManutencao = models.DateField()
-
+    
+   
     def __str__(self):
         return f"{self.modelo} ({self.placa})"
 
@@ -31,6 +32,7 @@ class Manutencao(models.Model):
     descricao = models.TextField()
     data = models.DateField()
     custo = models.DecimalField(max_digits=10, decimal_places=2)
+    
 
     def __str__(self):
         return f"{self.get_tipo_display()} - {self.veiculo.modelo} ({self.data})"
@@ -66,3 +68,4 @@ class Entrega(models.Model):
         default="PENDENTE"
     )
     veiculo = models.ForeignKey('Veiculo', on_delete=models.SET_NULL, null=True, blank=True)
+   
